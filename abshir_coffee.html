@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABSHIR Coffee | Premium Blends</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        coffee: {
+                            50: '#fdf8f6',
+                            100: '#f2e8e5',
+                            200: '#eaddd7',
+                            300: '#e0cec7',
+                            400: '#d2bab0',
+                            500: '#a37a6a', // Brand primary
+                            600: '#8c6353',
+                            700: '#6b4c3f',
+                            800: '#4a352c',
+                            900: '#2c1e19', // Dark background
+                        },
+                        cream: '#f5f5dc'
+                    },
+                    fontFamily: {
+                        heading: ['"Playfair Display"', 'serif'],
+                        body: ['"Inter"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fdf8f6;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+        }
+        .hero-pattern {
+            background-color: #2c1e19;
+            background-image: linear-gradient(rgba(44, 30, 25, 0.8), rgba(44, 30, 25, 0.9)), url('https://images.unsplash.com/photo-1497935586351-b67a49e012bf?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        
+        .menu-item-hover:hover .menu-price {
+            color: #a37a6a;
+            transform: scale(1.1);
+        }
+        .menu-price {
+            transition: all 0.3s ease;
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #fdf8f6;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #a37a6a;
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #8c6353;
+        }
+    </style>
+</head>
+<body class="text-gray-800 antialiased selection:bg-coffee-500 selection:text-white flex flex-col min-h-screen">
+
+    <nav class="fixed w-full z-50 transition-all duration-300 bg-white/90 backdrop-blur-md shadow-sm" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <i class="fa-solid fa-mug-hot text-coffee-600 text-3xl"></i>
+                    <span class="font-heading font-bold text-2xl text-coffee-900 tracking-tight">ABSHIR Coffee</span>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#home" class="text-gray-600 hover:text-coffee-600 font-medium transition-colors">Home</a>
+                    <a href="#about" class="text-gray-600 hover:text-coffee-600 font-medium transition-colors">Our Story</a>
+                    <a href="#menu" class="text-gray-600 hover:text-coffee-600 font-medium transition-colors">Menu</a>
+                    <a href="#contact" class="bg-coffee-600 text-white px-6 py-2 rounded-full hover:bg-coffee-700 transition-colors shadow-md hover:shadow-lg transform hover:-translate-y-0.5 duration-200">Visit Us</a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-600 hover:text-coffee-600 focus:outline-none p-2">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full shadow-lg">
+            <div class="px-4 pt-2 pb-6 space-y-1 flex flex-col">
+                <a href="#home" class="mobile-link block px-3 py-3 text-base font-medium text-gray-700 hover:text-coffee-600 hover:bg-coffee-50 rounded-md">Home</a>
+                <a href="#about" class="mobile-link block px-3 py-3 text-base font-medium text-gray-700 hover:text-coffee-600 hover:bg-coffee-50 rounded-md">Our Story</a>
+                <a href="#menu" class="mobile-link block px-3 py-3 text-base font-medium text-gray-700 hover:text-coffee-600 hover:bg-coffee-50 rounded-md">Menu</a>
+                <a href="#contact" class="mobile-link block mt-4 text-center bg-coffee-600 text-white px-6 py-3 rounded-md hover:bg-coffee-700 font-medium">Visit Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow">
+        <section id="home" class="hero-pattern min-h-screen flex items-center justify-center pt-20 relative overflow-hidden">
+            <!-- Decorative elements -->
+            <div class="absolute top-1/4 left-10 w-32 h-32 bg-coffee-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
+            <div class="absolute top-1/3 right-10 w-40 h-40 bg-orange-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
+
+            <div class="text-center px-4 sm:px-6 lg:px-8 z-10 max-w-4xl mx-auto">
+                <span class="block text-coffee-300 font-semibold tracking-wider uppercase mb-4 text-sm md:text-base">Welcome to</span>
+                <h1 class="text-5xl md:text-7xl lg:text-8xl font-heading font-bold text-white mb-6 drop-shadow-lg leading-tight">
+                    ABSHIR Coffee
+                </h1>
+                <p class="mt-4 text-lg md:text-xl text-gray-200 mb-10 max-w-2xl mx-auto font-light leading-relaxed">
+                    Discover your new daily ritual. We serve meticulously crafted coffee starting at just $2, blending rich tradition with modern comfort.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="#menu" class="bg-coffee-500 hover:bg-coffee-600 text-white font-semibold py-4 px-8 rounded-full transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                        Explore Our Menu
+                    </a>
+                    <a href="#about" class="bg-transparent border-2 border-white/70 hover:border-white text-white hover:bg-white/10 font-semibold py-4 px-8 rounded-full transition-all">
+                        Our Story
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Scroll indicator -->
+            <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+                <a href="#about" class="text-white/70 hover:text-white transition-colors">
+                    <i class="fa-solid fa-chevron-down text-2xl"></i>
+                </a>
+            </div>
+        </section>
+
+        <section id="about" class="py-24 bg-coffee-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col lg:flex-row items-center gap-16">
+                    <div class="lg:w-1/2 relative">
+                        <div class="absolute -inset-4 bg-coffee-200/50 rounded-2xl transform rotate-3"></div>
+                        <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Barista pouring coffee" class="relative rounded-xl shadow-2xl object-cover h-[500px] w-full z-10">
+                        <!-- Floating badge -->
+                        <div class="absolute -bottom-6 -right-6 bg-white p-4 rounded-xl shadow-xl z-20 flex items-center gap-4">
+                            <div class="bg-coffee-100 p-3 rounded-full text-coffee-600">
+                                <i class="fa-solid fa-leaf text-xl"></i>
+                            </div>
+                            <div>
+                                <p class="font-bold text-gray-900">100% Organic</p>
+                                <p class="text-sm text-gray-500">Ethically Sourced</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="lg:w-1/2">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="h-[2px] w-12 bg-coffee-500"></div>
+                            <span class="text-coffee-600 font-semibold uppercase tracking-wider text-sm">Our Story</span>
+                        </div>
+                        <h2 class="text-4xl md:text-5xl font-heading font-bold text-coffee-900 mb-6 leading-tight">Crafting the Perfect Cup, Every Time.</h2>
+                        <p class="text-gray-600 mb-6 text-lg leading-relaxed">
+                            At ABSHIR Coffee, we believe that great coffee shouldn't be a luxury. Born from a passion for rich flavors and community connection, we've created a space where quality meets affordability.
+                        </p>
+                        <p class="text-gray-600 mb-8 text-lg leading-relaxed">
+                            Our beans are carefully selected and roasted to perfection. Whether you need a quick $2 espresso to start your day or want to indulge in one of our signature $10 specialty blends, we promise an exceptional experience in every sip.
+                        </p>
+                        
+                        <div class="grid grid-cols-2 gap-6 mb-8">
+                            <div class="flex flex-col">
+                                <span class="text-4xl font-heading font-bold text-coffee-600 mb-2">High</span>
+                                <span class="text-gray-700 font-medium">Quality Beans</span>
+                            </div>
+                            <div class="flex flex-col">
+                                <span class="text-4xl font-heading font-bold text-coffee-600 mb-2">Fair</span>
+                                <span class="text-gray-700 font-medium">Pricing ($2-$10)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="menu" class="py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <div class="flex items-center justify-center gap-3 mb-4">
+                        <div class="h-[2px] w-8 bg-coffee-500"></div>
+                        <span class="text-coffee-600 font-semibold uppercase tracking-wider text-sm">Our Offerings</span>
+                        <div class="h-[2px] w-8 bg-coffee-500"></div>
+                    </div>
+                    <h2 class="text-4xl md:text-5xl font-heading font-bold text-coffee-900 mb-6">The Menu</h2>
+                    <p class="text-gray-600 text-lg">Premium coffee without the premium price tag. Explore our range from classic essentials to indulgent specialties, priced comfortably between $2 and $10.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-x-12 gap-y-16">
+                    
+                    <!-- Classics Category -->
+                    <div>
+                        <h3 class="text-2xl font-heading font-bold text-coffee-800 mb-8 pb-4 border-b-2 border-coffee-100 flex items-center justify-between">
+                            <span>Classic Brews</span>
+                            <i class="fa-solid fa-mug-saucer text-coffee-300 text-xl"></i>
+                        </h3>
+                        <div class="space-y-6">
+                            <!-- Item -->
+                            <div class="menu-item-hover group relative pl-4 border-l-2 border-transparent hover:border-coffee-500 transition-colors">
+                                <div class="flex justify-between items-baseline mb-1">
+                                    <h4 class="text-lg font-bold text-gray-900 group-hover:text-coffee-700 transition-colors">Espresso</h4>
+                                    <div class="flex-grow border-b border-dashed border-gray-300 mx-4 relative top-[-6px]"></div>
+                                    <span class="text-xl font-bold text-coffee-600 menu-price">$2.00</span>
+                                </div>
+                                <p class="text-sm text-gray-500">A rich, concentrated shot of our signature blend.</p>
+                            </div>
+                            <!-- Item -->
+                            <div class="menu-item-hover group relative pl-4 border-l-2 border-transparent hover:border-coffee-500 transition-colors">
+                                <div class="flex justify-between items-baseline mb-1">
+                                    <h4 class="text-lg font-bold text-gray-900 group-hover:text-coffee-700 transition-colors">Americano</h4>
+                                    <div class="flex-grow border-b border-dashed border-gray-300 mx-4 relative top-[-6px]"></div>
+                                    <span class="text-xl font-bold text-coffee-600 menu-price">$3.50</span>
+                                </div>
+                                <p class="text-sm text-gray-500">Espresso poured over hot water. Bold and smooth.</p>
+                            </div>
+                            <!-- Item -->
+                            <div class="menu-item-hover group relative pl-4 border-l-2 border-transparent hover:border-coffee-500 transition-colors">
+                                <div class="flex justify-between items-baseline mb-1">
+                                    <h4 class="text-lg font-bold text-gray-900 group-hover:text-coffee-700 transition-colors">Drip Coffee</h4>
+                                    <div class="flex-grow border-b border-dashed border-gray-300 mx-4 relative top-[-6px]"></div>
+                                    <span class="text-xl font-bold text-coffee-600 menu-price">$2.50</span>
+                                </div>
+                                <p class="text-sm text-gray-500">Freshly brewed single-origin daily selection.</p>
+                            </div>
+                             <!-- Item -->
+                             <div class="menu-item-hover group relative pl-4 border-l-2 border-transparent hover:border-coffee-500 transition-colors">
+                                <div class="flex justify-between items-baseline mb-1">
+                                    <h4 class="text-lg font-bold text-gray-900 group-hover:text-coffee-700 transition-colors">Macchiato</h4>
+                                    <div class="flex-grow border-b border-dashed border-gray-300 mx-4 relative top-[-6px]"></div>
+                                    <span class="text-xl font-bold text-coffee-600 menu-price">$3.00</span>
+                                </div>
+                                <p class="text-sm text-gray-500">Espresso marked with a dollop of steamed milk foam.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Milk Based Category -->
+                    <div>
+                        <h3 class="text-2xl font-heading font-bold text-coffee-800 mb-8 pb-4 border-b-2 border-coffee-100 flex items-center justify-between">
+                            <span>Milk & Espresso</span>
+                            <i class="fa-solid fa-glass-water text-coffee-300 text-xl"></i>
+                        </h3>
+                        <div class="space-y-6">
+                            <!-- Item -->
+                            <div class="menu-item-hover group relative pl-4 border-l-2 border-transparent hover:border-coffee-500 transition-colors">
+                                <div class="flex justify-between items-baseline mb-1">
+                                    <h4 class="text-lg font-bold text-gray-900 group-hover:text-coffee-700 transition-colors">Cappuccino</h4>
+                                    <div class="flex-grow border-b border-dashed border-gray-300 mx-4 relative top-[-6px]"></div>
+                                    <span class="text-xl font-bold text-coffee-600 menu-price">$4.50</span>
+                                </div>
+                                <p class="text-sm text-gray-500">Equal parts espresso, steamed milk, and thick foam.</p>
+                            </div>
+                            <!-- Item -->
+                            <div class="menu-item-hover group relative pl-4 border-l-2 border-transparent hover:border-coffee-500 transition-colors">
+                                <div class="flex justify-between items-baseline mb-1">
+                                    <h4 class="text-lg font-bold text-gray-900 group-hover:text-coffee-700 transition-colors">Latte</h4>
+                                    <div class="flex-grow border-b border-dashed border-gray-300 mx-4 relative top-[-6px]"></div>
+                                    <span class="text-xl font-bold text-coffee-600 menu-price">$5.00</span>
+                                </div>
+                                <p class="text-sm text-gray-500">Espresso with plenty of steamed milk and a light foam layer.</p>
+                            </div>
+                            <!-- Item -->
+                            <div class="menu-item-hover group relative pl-4 border-l-2 border-transparent hover:border-coffee-500 transition-colors">
+                                <div class="flex justify-between items-baseline mb-1">
+                                    <h4 class="text-lg font-bold text-gray-900 group-hover:text-coffee-700 transition-colors">Mocha</h4>
+                                    <div class="flex-grow border-b border-dashed border-gray-300 mx-4 relative top-[-6px]"></div>
+                                    <span class="text-xl font-bold text-coffee-600 menu-price">$5.50</span>
+                                </div>
+                                <p class="text-sm text-gray-500">Espresso, rich chocolate syrup, and steamed milk.</p>
+                            </div>
+                            <!-- Item -->
+                            <div class="menu-item-hover group relative pl-4 border-l-2 border-transparent hover:border-coffee-500 transition-colors">
+                                <div class="flex justify-between items-baseline mb-1">
+                                    <h4 class="text-lg font-bold text-gray-900 group-hover:text-coffee-700 transition-colors">Flat White</h4>
+                                    <div class="flex-grow border-b border-dashed border-gray-300 mx-4 relative top-[-6px]"></div>
+                                    <span class="text-xl font-bold text-coffee-600 menu-price">$4.75</span>
+                                </div>
+                                <p class="text-sm text-gray-500">Double espresso with micro-foamed milk. Silky texture.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Specialties Category -->
+                    <div class="md:col-span-2 mt-8">
+                        <div class="bg-coffee-50 rounded-2xl p-8 md:p-10 relative overflow-hidden border border-coffee-100">
+                            <!-- Background decoration -->
+                            <i class="fa-solid fa-star absolute -right-4 -top-4 text-8xl text-coffee-100 opacity-50 transform rotate-12"></i>
+                            
+                            <h3 class="text-2xl font-heading font-bold text-coffee-900 mb-8 pb-4 border-b-2 border-coffee-200 inline-block relative z-10">
+                                ABSHIR Specialties
+                            </h3>
+                            <div class="grid md:grid-cols-2 gap-x-12 gap-y-6 relative z-10">
+                                <!-- Item -->
+                                <div class="menu-item-hover group bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-all">
+                                    <div class="flex justify-between items-center mb-2">
+                                        <h4 class="text-lg font-bold text-coffee-800">ABSHIR Signature Pour-Over</h4>
+                                        <span class="bg-coffee-600 text-white px-3 py-1 rounded-full text-sm font-bold shadow-sm menu-price transition-none">$8.00</span>
+                                    </div>
+                                    <p class="text-sm text-gray-600">A meticulously crafted pour-over using our reserve, limited-batch beans. Notes of wild berry and dark chocolate.</p>
+                                </div>
+                                <!-- Item -->
+                                <div class="menu-item-hover group bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-all">
+                                    <div class="flex justify-between items-center mb-2">
+                                        <h4 class="text-lg font-bold text-coffee-800">Iced Caramel Cloud</h4>
+                                        <span class="bg-coffee-600 text-white px-3 py-1 rounded-full text-sm font-bold shadow-sm menu-price transition-none">$6.50</span>
+                                    </div>
+                                    <p class="text-sm text-gray-600">Cold brew coffee topped with a thick layer of sea-salt caramel cold foam. Refreshing and sweet.</p>
+                                </div>
+                                <!-- Item -->
+                                <div class="menu-item-hover group bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-all">
+                                    <div class="flex justify-between items-center mb-2">
+                                        <h4 class="text-lg font-bold text-coffee-800">Spiced Somali Chai</h4>
+                                        <span class="bg-coffee-600 text-white px-3 py-1 rounded-full text-sm font-bold shadow-sm menu-price transition-none">$5.00</span>
+                                    </div>
+                                    <p class="text-sm text-gray-600">Traditional black tea brewed with cardamom, cinnamon, cloves, and whole milk.</p>
+                                </div>
+                                <!-- Item -->
+                                <div class="menu-item-hover group bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-all border-2 border-yellow-400 relative">
+                                    <div class="absolute -top-3 -left-3 bg-yellow-400 text-yellow-900 text-xs font-bold px-2 py-1 rounded shadow">Premium</div>
+                                    <div class="flex justify-between items-center mb-2 mt-1">
+                                        <h4 class="text-lg font-bold text-coffee-800">The ABSHIR Experience</h4>
+                                        <span class="bg-coffee-800 text-yellow-400 px-3 py-1 rounded-full text-sm font-bold shadow-sm menu-price transition-none">$10.00</span>
+                                    </div>
+                                    <p class="text-sm text-gray-600">Our ultimate offering. A flight of 3 distinct espresso origins, served with palate cleansers and tasting notes.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="py-0 flex flex-wrap w-full h-64 md:h-96">
+            <div class="w-1/2 md:w-1/4 h-full relative group overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Coffee beans" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <i class="fa-brands fa-instagram text-white text-3xl"></i>
+                </div>
+            </div>
+            <div class="w-1/2 md:w-1/4 h-full relative group overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1495474472204-518625ec13b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Latte art" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <i class="fa-brands fa-instagram text-white text-3xl"></i>
+                </div>
+            </div>
+            <div class="w-1/2 md:w-1/4 h-full relative group overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1559525839-b184a4d698c7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Coffee shop interior" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <i class="fa-brands fa-instagram text-white text-3xl"></i>
+                </div>
+            </div>
+            <div class="w-1/2 md:w-1/4 h-full relative group overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Pouring coffee" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <i class="fa-brands fa-instagram text-white text-3xl"></i>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="py-24 bg-coffee-900 text-white relative">
+            <div class="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-coffee-500 to-transparent"></div>
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col lg:flex-row gap-16">
+                    <!-- Info -->
+                    <div class="lg:w-1/2">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="h-[2px] w-12 bg-coffee-400"></div>
+                            <span class="text-coffee-300 font-semibold uppercase tracking-wider text-sm">Visit Us</span>
+                        </div>
+                        <h2 class="text-4xl md:text-5xl font-heading font-bold mb-8">Drop By For A Cup</h2>
+                        
+                        <div class="space-y-8">
+                            <div class="flex items-start gap-4">
+                                <div class="bg-coffee-800 p-4 rounded-full text-coffee-300 shrink-0">
+                                    <i class="fa-solid fa-location-dot text-xl w-6 text-center"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-bold mb-1">Location</h4>
+                                    <p class="text-gray-400 leading-relaxed">123 Brew Avenue<br>Coffee District, CD 90210</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start gap-4">
+                                <div class="bg-coffee-800 p-4 rounded-full text-coffee-300 shrink-0">
+                                    <i class="fa-solid fa-clock text-xl w-6 text-center"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-bold mb-1">Hours</h4>
+                                    <p class="text-gray-400">Mon-Fri: 6:00 AM - 8:00 PM</p>
+                                    <p class="text-gray-400">Sat-Sun: 7:30 AM - 9:00 PM</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start gap-4">
+                                <div class="bg-coffee-800 p-4 rounded-full text-coffee-300 shrink-0">
+                                    <i class="fa-solid fa-phone text-xl w-6 text-center"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-bold mb-1">Contact</h4>
+                                    <p class="text-gray-400">hello@abshircoffee.com</p>
+                                    <p class="text-gray-400">+252 619741929</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Simple Contact Form -->
+                    <div class="lg:w-1/2">
+                        <div class="bg-white rounded-2xl p-8 shadow-2xl text-gray-800">
+                            <h3 class="text-2xl font-heading font-bold mb-6 text-coffee-900">Send us a message</h3>
+                            <form id="contact-form" class="space-y-4" onsubmit="event.preventDefault(); showMessage();">
+                                <div>
+                                    <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Name</label>
+                                    <input type="text" id="name" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-coffee-500 focus:border-coffee-500 outline-none transition-colors bg-gray-50 focus:bg-white" placeholder="John Doe">
+                                </div>
+                                <div>
+                                    <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                                    <input type="email" id="email" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-coffee-500 focus:border-coffee-500 outline-none transition-colors bg-gray-50 focus:bg-white" placeholder="john@example.com">
+                                </div>
+                                <div>
+                                    <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Message</label>
+                                    <textarea id="message" rows="4" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-coffee-500 focus:border-coffee-500 outline-none transition-colors bg-gray-50 focus:bg-white resize-none" placeholder="How can we help you?"></textarea>
+                                </div>
+                                <button type="submit" class="w-full bg-coffee-600 hover:bg-coffee-700 text-white font-bold py-3 px-4 rounded-lg transition-colors shadow-md hover:shadow-lg">
+                                    Send Message
+                                </button>
+                                
+                                <!-- Success Message Placeholder -->
+                                <div id="form-success" class="hidden mt-4 p-3 bg-green-50 text-green-700 rounded-lg text-sm flex items-center gap-2">
+                                    <i class="fa-solid fa-check-circle"></i>
+                                    Thanks for reaching out! We'll get back to you soon.
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-coffee-950 text-gray-400 py-12 border-t border-coffee-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-mug-hot text-coffee-500 text-2xl"></i>
+                    <span class="font-heading font-bold text-xl text-white">ABSHIR Coffee</span>
+                </div>
+                
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <span class="sr-only">Facebook</span>
+                        <i class="fa-brands fa-facebook text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <span class="sr-only">Instagram</span>
+                        <i class="fa-brands fa-instagram text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <span class="sr-only">Twitter</span>
+                        <i class="fa-brands fa-twitter text-xl"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="mt-8 border-t border-coffee-800 pt-8 flex flex-col md:flex-row justify-between items-center text-sm">
+                <p>&copy; 2026 ABSHIR Coffee. All rights reserved.</p>
+                <div class="flex space-x-4 mt-4 md:mt-0">
+                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) {
+                navbar.classList.add('shadow-md', 'bg-white');
+                navbar.classList.remove('bg-white/90');
+            } else {
+                navbar.classList.remove('shadow-md', 'bg-white');
+                navbar.classList.add('bg-white/90');
+            }
+        });
+
+        // Mobile menu toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+        const icon = btn.querySelector('i');
+
+        function toggleMenu() {
+            menu.classList.toggle('hidden');
+            if(menu.classList.contains('hidden')) {
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            } else {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
+            }
+        }
+
+        btn.addEventListener('click', toggleMenu);
+
+        // Close mobile menu when clicking a link
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if(!menu.classList.contains('hidden')){
+                    toggleMenu();
+                }
+            });
+        });
+
+        // Form submission simulation
+        function showMessage() {
+            const form = document.getElementById('contact-form');
+            const successMsg = document.getElementById('form-success');
+            const inputs = form.querySelectorAll('input, textarea, button');
+            
+            // Disable inputs briefly
+            inputs.forEach(input => input.disabled = true);
+            
+            // Show message
+            successMsg.classList.remove('hidden');
+            
+            // Reset after 3 seconds
+            setTimeout(() => {
+                form.reset();
+                successMsg.classList.add('hidden');
+                inputs.forEach(input => input.disabled = false);
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
